@@ -1,126 +1,96 @@
-.
+# Neural Network Implementation from Scratch
 
-🌸 Data Preprocessing Assignment — Iris Dataset
-📘 Overview
+## About the Project
 
-This project demonstrates data preprocessing and feature engineering techniques using the Iris Dataset, a classic dataset from the UCI Machine Learning Repository (available through scikit-learn).
-The task involves preparing the dataset for machine learning by performing all standard preprocessing steps: handling missing data, encoding, scaling, feature extraction, and selection.
+This project is a simple implementation of a feedforward neural network using
+Python and NumPy. The main purpose of the project is to understand how a
+neural network works internally instead of using libraries such as TensorFlow
+or PyTorch.
 
-📊 Dataset Details
-Feature	Description	Type
-sepal length (cm)	Length of the sepal	Numeric
-sepal width (cm)	Width of the sepal	Numeric
-petal length (cm)	Length of the petal	Numeric
-petal width (cm)	Width of the petal	Numeric
-target	Iris species (Setosa, Versicolor, Virginica)	Categorical
+The network is trained using forward propagation, backpropagation and gradient
+descent.
 
-Dataset Size: 150 samples × 5 columns
+## Dataset
 
-Target Variable: target (3 classes)
+The Iris dataset is used for this project. It contains measurements of iris
+flowers such as sepal length, sepal width, petal length and petal width.
 
-Source: UCI ML Repository - Iris Dataset
+For this implementation, two classes are used:
 
-🧠 Tasks Performed
-1. Load and Explore the Dataset
+- Iris Setosa (Class 0)
+- Iris Versicolor (Class 1)
 
-Loaded the Iris dataset using sklearn.datasets.load_iris()
+This makes the problem a binary classification task.
 
-Checked dataset structure, data types, and missing values.
+Dataset source:
 
-Displayed summary statistics and first few records.
+https://archive.ics.uci.edu/dataset/53/iris
 
-2. Handle Missing Data
+## Neural Network
 
-Simulated missing values to demonstrate preprocessing.
+The network used in this project has:
 
-Applied mean imputation using SimpleImputer to fill missing numeric values.
+- 4 input neurons
+- 1 hidden layer with 8 neurons
+- 1 output neuron
 
-3. Encode Categorical Variables
+The sigmoid activation function is used in the hidden and output layers.
 
-Used Label Encoding on the target variable (target_name → target_encoded).
+Binary Cross-Entropy is used as the loss function and gradient descent is used
+for training the network.
 
-4. Feature Scaling
+## Working
 
-Applied Standardization using StandardScaler to normalize numerical features.
+The implementation follows these steps:
 
-This ensures all features contribute equally to distance-based algorithms.
+1. Load the Iris dataset.
+2. Select the required two classes.
+3. Split the data into training and testing sets.
+4. Standardize the input features.
+5. Initialize weights and biases.
+6. Perform forward propagation.
+7. Calculate the loss.
+8. Perform backpropagation.
+9. Update the weights and biases using gradient descent.
+10. Repeat the process for the specified number of epochs.
+11. Test the trained model and calculate its accuracy.
 
-5. Dimensionality Reduction
+## Results
 
-Applied PCA (Principal Component Analysis) to reduce dimensions from 4 → 2 components.
+The model performance is checked using:
 
-Visualized PCA components to show clear class separation.
+- Training loss graph
+- Test accuracy
+- Confusion matrix
+- Classification report
 
-6. Feature Selection
+The training loss decreases as the model is trained, showing that the network
+is learning from the training data.
 
-Used VarianceThreshold to remove low-variance features.
+The final accuracy and confusion matrix obtained from the experiment are
+available in the Jupyter/Google Colab notebook.
 
-Used SelectKBest (Mutual Information) to identify top 2 predictive features.
+## Files
 
-7. Correlation Analysis
+`Soham_Sabane_GenerativeAILabAssignment.ipynb` - Main notebook containing
+the complete implementation.
 
-Generated a correlation heatmap to understand relationships between features.
+`README.md` - Project description and instructions.
 
-8. Save Processed Data
+## How to Run
 
-Final preprocessed dataset saved as iris_preprocessed.csv.
+The notebook can be opened directly in Google Colab.
 
-📁 File Structure
-├── iris_preprocessing.ipynb       # Main Jupyter Notebook
-├── iris_preprocessed.csv          # Processed dataset
-├── iris_pca_plot.png              # PCA visualization
-├── iris_corr_heatmap.png          # Correlation heatmap
-└── README.md                      # This file
+1. Open the `.ipynb` file in Google Colab.
+2. Run the cells from top to bottom.
+3. The dataset will be loaded automatically.
+4. The neural network will be trained.
+5. The final accuracy, confusion matrix and other results will be displayed.
 
-🧩 Libraries Used
-pandas
-numpy
-scikit-learn
-matplotlib
-seaborn
+## Author
 
+**Soham Sabane**
 
-To install dependencies:
-
-pip install pandas numpy scikit-learn matplotlib seaborn
-
-🧾 Summary of Transformations
-Step	Operation	Impact
-Missing Data	Mean imputation	Ensured no missing values
-Encoding	LabelEncoder	Converted text labels to numbers
-Scaling	StandardScaler	Equalized feature ranges
-PCA	4 → 2 components	Reduced dimensionality for visualization
-Feature Selection	SelectKBest, VarianceThreshold	Identified most important features
-Correlation	Heatmap	Helped understand feature relationships
-⚖️ Ethical Considerations
-
-If the dataset included sensitive attributes like Gender or Marital Status, using them for predictions could introduce bias or discrimination.
-To mitigate bias:
-
-Remove or anonymize sensitive columns.
-
-Evaluate fairness metrics (e.g., disparate impact).
-
-Use balanced data sampling.
-
-Be transparent in feature selection and modeling decisions.
-
-🧩 How to Run the Notebook
-
-Open the .ipynb file in Jupyter Notebook or Google Colab.
-
-Run all cells sequentially.
-
-The notebook will generate:
-
-Processed dataset (iris_preprocessed.csv)
-
-PCA plot (iris_pca_plot.png)
-
-Correlation heatmap (iris_corr_heatmap.png)
-
-✍️ Author
-
-Name: Soham Sabane
-Course: Data Preprocessing Practical
-Dataset: Iris Dataset (UCI ML Repository)
+Department: CSE AIML  
+Course: Generative AI Lab  
+Dataset: Iris Dataset
